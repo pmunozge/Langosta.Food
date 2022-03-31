@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf,org">
+<head>
+    <meta charset="UTF-8">
+    <title>¡ParaCasa! langosta.food</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2 class="h2">Gestion de Menús</h2></div>
+    <div class="m-2">
+        <a class="h4" th:href="@{/menus/new}">Añadir nuevo Menú</a>
+    </div>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
+
+
+    <div>
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID Menú</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Productos</th>
+                    <th>En Stock</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <th:block th:each="menu : ${listMenus}">
+                    <tr>
+                        <td>[[${menu.idmenu}]]</td>
+                        <td>[[${menu.nombre}]]</td>
+                        <td>[[${menu.precio}]]</td>
+                        <td>[[${menu.productos}]]</td>
+                        <td>[[${menu.enabled}]]</td>
+                        <td>
+                            <a class="h4 mr-3" th:href="@{'/menus/edit/' + ${menu.idmenu} }">Editar</a>
+                            <a class="h4 mr-3" th:href="@{'/menus/delete/' + ${menu.idmenu} }">Borrar</a>
+                        </td>
+                    </tr>
+                </th:block>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+</body>
+</html>
