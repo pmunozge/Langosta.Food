@@ -4,5 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface MenuRepository extends CrudRepository<Menu,Integer> {
 
-    public Long countById(Integer idmenu);
+    //public Long countById(Integer idmenu);
 }
