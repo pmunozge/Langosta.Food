@@ -23,17 +23,18 @@ public class Menu {
 
     private boolean enabled;
 
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    @ManyToMany(cascade = {CascadeType.ALL},mappedBy = "menus")
+    @ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST })
+    @JoinTable(name = "producto_menu", joinColumns = { @JoinColumn(name = "idproducto") }, inverseJoinColumns = {
+            @JoinColumn(name = "idmenu") })
    private Set<Producto> productos=new HashSet();
 
+    public boolean isEnabled() {
+        return enabled;
+   }
+
+   public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
     public Integer getIdmenu() {
         return idmenu;
     }

@@ -25,8 +25,7 @@ public class Producto {
     private Tipo tipo;
 
 
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
+    @ManyToMany(mappedBy = "productos")
     private Set<Menu> menus=new HashSet();
 
 

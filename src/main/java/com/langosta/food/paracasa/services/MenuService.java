@@ -27,11 +27,11 @@ public class MenuService {
         }
         throw new MenuNotFoundException("No se ha encontrado ningún menú con ese el id " + idmenu + ".");
     }
-  /*  public void delete(Integer idmenu) throws MenuNotFoundException {
-        Long count = repo.countById(idmenu); *//* Problema por resolver*//*
-        if(count != null|| count ==0){
+   public void delete(Integer idmenu) throws MenuNotFoundException {
+        Optional<Menu> result = repo.findById(idmenu); /* Problema por resolver*/
+        if(!result.isPresent()){
             throw new MenuNotFoundException("No se ha encontrado ningún menú con ese el id " + idmenu + ".");
         }
         repo.deleteById(idmenu);
-    }*/
+    }
 }

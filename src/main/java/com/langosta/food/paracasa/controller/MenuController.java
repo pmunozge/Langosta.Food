@@ -54,7 +54,7 @@ public class MenuController {
 
     }
 
-   /* @GetMapping("/menus/delete/{idmenu}")
+    @GetMapping("/menus/delete/{idmenu}")
     public String deleteUser(@PathVariable("idmenu")Integer idmenu,  RedirectAttributes ra){
         try{
             service.delete(idmenu);
@@ -66,7 +66,7 @@ public class MenuController {
         }
         return "redirect:/menus";
 
-    }*/
+    }
 
 
 }
