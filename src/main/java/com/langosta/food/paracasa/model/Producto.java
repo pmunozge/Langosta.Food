@@ -24,11 +24,11 @@ public class Producto {
     @JoinColumn(name = "FK_TIPO", updatable = false, nullable = false)
     private Tipo tipo;
 
-
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
+/*
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    //@JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
     private Set<Menu> menus=new HashSet();
-
+*/
 
     public Integer getIdproducto() {
         return idproducto;
@@ -69,7 +69,7 @@ public class Producto {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-
+/*
     public Set<Menu> getMenus() {
         return menus;
     }
@@ -77,7 +77,7 @@ public class Producto {
     public void setMenus(Set<Menu> menus) {
         this.menus = menus;
     }
-
+*/
     public Producto() {
     }
 
@@ -87,6 +87,6 @@ public class Producto {
         this.descripcion = descripcion;
         this.kcal = kcal;
         this.tipo = tipo;
-        this.menus = menus;
+        //this.menus = menus;
     }
 }
