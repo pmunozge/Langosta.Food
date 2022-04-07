@@ -1,4 +1,4 @@
-/* Resteamos css */
+/* Reseteamos css */
 /*PRUEBA JC*/
 * {
     margin: 0;
@@ -17,10 +17,22 @@ body {
     background-color: #FB6100;
 }
 
-.bg-light {
+.bg-dark {
     background-color: transparent !important;
 }
 
 .navbar-brand {
     color: #ffffff;
+}
+
+.nav-link{
+    color: #ffffff;
+}
+
+.nav-link:hover {
+    color: #F8F8FA;
+}
+
+.dropdown-menu {
+    background-color: #fa9c62;
 }
