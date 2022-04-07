@@ -20,8 +20,8 @@ public class Producto {
     @Column
     private String kcal;
 
-    @OneToOne
-    @JoinColumn(name = "FK_TIPO", updatable = false, nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "FK_TIPO")
     private Tipo tipo;
 
 /*

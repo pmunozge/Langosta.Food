@@ -1,6 +1,8 @@
 package com.langosta.food.paracasa.model;
 
 import javax.persistence.*;
+import java.util.Set;
+
 @Entity
 @Table(name="tipo")
 public class Tipo {
@@ -12,8 +14,8 @@ public class Tipo {
     @Column(length = 50, nullable = false)
     private String nombre;
 
-    @OneToOne(mappedBy = "tipo", cascade = CascadeType.ALL)
-    private Producto producto;
+    @OneToMany(mappedBy = "tipo", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Producto> producto;
 
     public Integer getIdtipo() {
         return idtipo;
@@ -31,13 +33,7 @@ public class Tipo {
         this.nombre = nombre;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
 
     public Tipo() {
     }
@@ -45,6 +41,14 @@ public class Tipo {
     public Tipo(Integer idtipo, String nombre, Producto producto) {
         this.idtipo = idtipo;
         this.nombre = nombre;
+        //this.producto = producto;
+    }
+
+    public Set<Producto> getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Set<Producto> producto) {
         this.producto = producto;
     }
 }
