@@ -1,0 +1,26 @@
+/* Resteamos css */
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+body {
+    background-color: #F8F8FA;
+}
+
+.nav-langosta {
+    background-color: #FB6100;
+}
+
+.bg-light {
+    background-color: transparent !important;
+}
+
+.navbar-brand {
+    color: #ffffff;
+}
