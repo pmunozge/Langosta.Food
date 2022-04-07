@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>¡ParaCasa! langosta.food</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}"  rel="stylesheet" />
 </head>
 <body>
-<div class="container-fluid text-center">
-    <h1>Bienvenidos a la tienda ¡ParaCasa!</h1>
-    <a class="h2" th:href="@{/menus}">Editar Menu</a>
+<div class="container">
+    <img th:src="@{/img/logoLangosta.png}" alt="" class="img-fluid">
+    <h1>Bienvenidos a Langosta.food</h1>
+    <a class="h2" th:href="@{/menus}" style="color: #FB6100">Entrar ahora</a>
 </div>
 </body>
 </html>
