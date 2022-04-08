@@ -3,7 +3,6 @@ th {
     color: #FFFFFF !important;
     text-align: left;
     border: none !important;
-
 }
 
 td {
@@ -11,13 +10,6 @@ td {
     margin-bottom: 10px;
     line-height:80px;
     text-align: left;
-}
-
-
-
-.info-copyright {
-    background-color: #EFEDEA;
-    font-weight: 600;
 }
 
 #titulo_aptdo {

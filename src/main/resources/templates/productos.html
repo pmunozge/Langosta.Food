@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}"  rel="stylesheet" />
     <link href="../static/css/styles.css" th:href="@{/css/platos.css}"  rel="stylesheet" />
+<!--    Libreria de iconos de FontAwsome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
 </head>
@@ -50,12 +51,6 @@
 <h1 id="titulo_aptdo">Platos</h1>
 
 
-<!--link a nuevo plato ya incluido en el desplegable de Opciones-->
-<!--<div class="m-2">-->
-<!--    <a class="h4" th:href="@{/prodcutos/new}">Añadir nuevo producto</a>-->
-<!--</div>-->
-
-
 <div th:if="${message}" class="alert alert-success text-center">
     [[${message}]]
 </div>
@@ -68,7 +63,7 @@
             <th style="border-top-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
             <th style="font-size: 20px">Nombre</th>
             <th>Calorias</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Tipo</th>
             <th style="border-top-right-radius:10px;"></th>
         </tr>
@@ -83,15 +78,27 @@
                 <td>[[${producto.tipo.nombre}]]</td>
                 <td>
                     <a class="h4 mr-3" th:href="@{'/productos/edit/' + ${producto.idproducto} }">
-                        <i class="fa-solid fa-eye" style="color: #FB6100;"></i>
+                       <i class="fa-solid fa-eye"                               <!-- Abrimos icono de fontawesome-->
+                            style="color: #FB6100;"                             <!-- Le damos color-->
+                            onmouseover="this.style.transform='scale(1.2)'"     <!-- Le aumentamos el escalado al pasar por encima con el ratón-->
+                            onmouseout="this.style.transform='scale(1.0)'">     <!-- Recuperamos escalado al quitar el ratón-->
+                        </i>
                     </a>
 
                     <a class="h4 mr-3" th:href="@{'/productos/edit/' + ${producto.idproducto} }">
-                        <i class="fa-solid fa-pen-to-square" style="color: #FB6100;"></i>
+                        <i class="fa-solid fa-pen-to-square"
+                           style="color: #FB6100;"
+                           onmouseover="this.style.transform='scale(1.2)'"
+                           onmouseout="this.style.transform='scale(1.0)'">
+                        </i>
                     </a>
 
                     <a class="h4 mr-3" th:href="@{'/productos/delete/' + ${producto.idproducto} }">
-                        <i class="fa-solid fa-trash-can" style="color: #FB6100;"></i>
+                        <i class="fa-solid fa-trash-can"
+                           style="color: #FB6100;"
+                           onmouseover="this.style.transform='scale(1.2)'"
+                           onmouseout="this.style.transform='scale(1.0)'">
+                        </i>
                     </a>
                 </td>
             </tr>
@@ -101,7 +108,7 @@
             <th style="border-bottom-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
             <th style="font-size: 20px">Nombre</th>
             <th>Calorias</th>
-            <th>Descripcion</th>
+            <th>Descripción</th>
             <th>Tipo</th>
             <th style="border-bottom-right-radius:10px;"></th>
         </tr>
