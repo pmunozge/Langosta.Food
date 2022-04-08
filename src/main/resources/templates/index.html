@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http:www.thymeleaf,org">
+
 <head>
     <meta charset="UTF-8">
     <title>¡ParaCasa! langosta.food</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}"  rel="stylesheet" />
+    <link href="../static/css/index.css" th:href="@{/css/index.css}"  rel="stylesheet" />
 </head>
-<body>
-<div class="container">
-    <img th:src="@{/img/logoLangosta.png}" alt="" class="img-fluid">
-    <h1>Bienvenidos a Langosta.food</h1>
-    <a class="h2" th:href="@{/menus}" style="color: #FB6100">Entrar ahora</a>
-</div>
-</body>
+
+<body th:style="'background: url(/img/background_01.png) no-repeat center center fixed;'">
+    <div class="container text-center">
+            <img th:src="@{/img/logoLangosta.png}" alt="" class="img-fluid">
+            <h1 >Bienvenidos a Langosta.food</h1>
+            <a class="h1" th:href="@{/menus}" style="color: #FB6100">Entrar ahora</a>
+    </div>
+
+
+
 </html>

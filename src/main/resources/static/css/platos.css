@@ -1,0 +1,16 @@
+.bg-light {
+    position: absolute;
+    background-color: #EFEDEA !important;
+
+    vertical-align: bottom;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+}
+
+.info-copyright {
+    background-color: #EFEDEA;
+    font-weight: 600;
+}
+
