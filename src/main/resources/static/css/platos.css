@@ -1,16 +1,38 @@
-.bg-light {
-    position: absolute;
-    background-color: #EFEDEA !important;
+th {
+    background-color: #FB6100 !important;
+    color: #FFFFFF !important;
+    text-align: left;
+    border: none !important;
 
-    vertical-align: bottom;
-    text-align: center;
-    bottom: 0px;
-    width: 100%;
-    height: 50px;
 }
+
+td {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height:80px;
+    text-align: left;
+}
+
+
 
 .info-copyright {
     background-color: #EFEDEA;
     font-weight: 600;
 }
 
+#titulo_aptdo {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    color: #FB6100;
+    text-align: center;
+}
+
+#container_platos {
+    max-width: 1080px;
+}
+
+#tabla-platos {
+    box-shadow: 5px 5px 10px;
+    border-radius:10px;
+    margin-bottom: 100px;
+}
