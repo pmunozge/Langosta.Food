@@ -24,11 +24,11 @@ public class Producto {
     @JoinColumn(name = "FK_TIPO")
     private Tipo tipo;
 
-/*
-    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
-    //@JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
     private Set<Menu> menus=new HashSet();
-*/
+
 
     public Integer getIdproducto() {
         return idproducto;

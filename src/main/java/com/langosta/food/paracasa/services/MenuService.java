@@ -4,6 +4,8 @@ package com.langosta.food.paracasa.services;
 import com.langosta.food.paracasa.exception.MenuNotFoundException;
 import com.langosta.food.paracasa.model.Menu;
 import com.langosta.food.paracasa.model.MenuRepository;
+import com.langosta.food.paracasa.model.Producto;
+import com.langosta.food.paracasa.model.Tipo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,16 @@ public class MenuService {
         return (List<Menu>) repo.findAll();
     }
     public void save(Menu menu){
+    /*    Producto p= new Producto();
+        Tipo t = new Tipo();
+        t.setIdtipo(2);
+
+        p.setNombre("probando");
+        p.setDescripcion("swwe");
+        p.setKcal("2.0");
+        p.setTipo(t);
+
+        menu.getProductos().add(p);*/
         repo.save(menu);
     }
     public Menu get(Integer idmenu) throws MenuNotFoundException {
@@ -27,11 +39,11 @@ public class MenuService {
         }
         throw new MenuNotFoundException("No se ha encontrado ningún menú con ese el id " + idmenu + ".");
     }
-  /*  public void delete(Integer idmenu) throws MenuNotFoundException {
-        Long count = repo.countById(idmenu); *//* Problema por resolver*//*
+    public void delete(Integer idmenu) throws MenuNotFoundException {
+        /*Long count = repo.countById(idmenu); *//* Problema por resolver*//*
         if(count != null|| count ==0){
             throw new MenuNotFoundException("No se ha encontrado ningún menú con ese el id " + idmenu + ".");
-        }
+        }*/
         repo.deleteById(idmenu);
-    }*/
+    }
 }
