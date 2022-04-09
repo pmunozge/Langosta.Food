@@ -20,12 +20,12 @@ public class Producto {
     @Column
     private String kcal;
 
-    @OneToOne
-    @JoinColumn(name = "FK_TIPO", updatable = false, nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "FK_TIPO")
     private Tipo tipo;
 
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
     private Set<Menu> menus=new HashSet();
 
@@ -69,15 +69,14 @@ public class Producto {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
-
-    public Set<Menu> getMenus() {
-        return menus;
-    }
-
-    public void setMenus(Set<Menu> menus) {
-        this.menus = menus;
-    }
-
+    /*
+        public Set<Menu> getMenus() {
+            return menus;
+        }
+        public void setMenus(Set<Menu> menus) {
+            this.menus = menus;
+        }
+    */
     public Producto() {
     }
 
@@ -87,6 +86,6 @@ public class Producto {
         this.descripcion = descripcion;
         this.kcal = kcal;
         this.tipo = tipo;
-        this.menus = menus;
+        //this.menus = menus;
     }
 }

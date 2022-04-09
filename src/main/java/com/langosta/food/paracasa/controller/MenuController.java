@@ -47,14 +47,14 @@ public class MenuController {
             return "menu_form";
         }catch (MenuNotFoundException e){
             ra.addFlashAttribute("message",e.getMessage());
-           // e.printStackTrace();
+            // e.printStackTrace();
             return "redirect:/menus";
         }
 
 
     }
 
-   /* @GetMapping("/menus/delete/{idmenu}")
+    @GetMapping("/menus/delete/{idmenu}")
     public String deleteUser(@PathVariable("idmenu")Integer idmenu,  RedirectAttributes ra){
         try{
             service.delete(idmenu);
@@ -66,7 +66,7 @@ public class MenuController {
         }
         return "redirect:/menus";
 
-    }*/
+    }
 
 
 }

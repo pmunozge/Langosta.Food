@@ -32,7 +32,9 @@ public class Menu {
     }
 
     @ManyToMany(cascade = {CascadeType.ALL},mappedBy = "menus")
-   private Set<Producto> productos=new HashSet();
+    //@ManyToMany( fetch = FetchType.LAZY,cascade =CascadeType.PERSIST)
+    //@JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
+    private Set<Producto> productos=new HashSet();
 
     public Integer getIdmenu() {
         return idmenu;
