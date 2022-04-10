@@ -8,8 +8,10 @@ th {
 td {
     margin-top: 10px;
     margin-bottom: 10px;
-    line-height:80px;
     text-align: left;
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+
 }
 
 #titulo_aptdo {
@@ -71,5 +73,10 @@ td {
     border-radius: 0.25rem;
     height: calc(1.5em + 0.75rem + 2px);
     width: 100%;
+
+}
+
+.icono {
+    color: #FB6100;
 
 }

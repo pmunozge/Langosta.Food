@@ -6,13 +6,16 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}"  rel="stylesheet" />
     <link href="../static/css/styles.css" th:href="@{/css/platos.css}"  rel="stylesheet" />
+    <link href="../static/css/styles.css" th:href="@{/css/formularios.css}"  rel="stylesheet" />
     <!--    Libreria de iconos de FontAwsome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
+    <!--Fuente importada de Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
 <!-- Inicio navbar -->
 <div class="container-fluid nav-langosta">
     <nav class="navbar navbar-expand-lg">
@@ -27,10 +30,10 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page">Menús</a>
+                        <a class="nav-link" th:href="@{/menus}">Menús</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/productos}">Platos</a>
+                        <a class="nav-link active" aria-current="page">Platos</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,16 +52,15 @@
 
 <!--cierre navbar-->
 
-<h1 id="Editar / Crear nuevo plato">Platos</h1>
-
+<!-- Inicio contenido -->
 <div class="container-fluid text-center">
     <div class="text-center">
-        <h2>[[${pageTitle}]]</h2>
+        <h1 id="titulo_aptdo">[[${pageTitle}]]</h1>
     </div>
     <form th:action="@{/productos/save}" method="post" th:object="${producto}"
           style="max-width: 500px; margin: 0 auto">
         <input type="hidden" th:field="*{idproducto}">
-        <div class="border border-secondary rounded p-3">
+        <div id="tabla-formulario" class="p-3">
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Nombre</label>
                 <div class="col-sm-8">
@@ -91,8 +93,8 @@
                 </div>
             </div>
             <div class="text-center">
-                <button  type="submit" class="btn btn-primary m-2">Guardar</button>
-                <button  type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+                <button  type="button" class="btn-cancelar" onclick="cancelForm()">Cancelar</button>
+                <button  type="submit" class="btn-guardar m-2">Guardar</button>
             </div>
         </div>
 

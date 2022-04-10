@@ -8,7 +8,10 @@
     <link href="../static/css/styles.css" th:href="@{/css/platos.css}"  rel="stylesheet" />
 <!--    Libreria de iconos de FontAwsome-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-
+<!--Fuente importada de Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@600&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -64,8 +67,8 @@
             <th style="border-top-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
             <th style="font-size: 20px">Nombre</th>
             <th>Calorias</th>
-            <th>Descripción</th>
             <th>Tipo</th>
+            <th>Descripción</th>
             <th style="border-top-right-radius:10px;"></th>
         </tr>
         </thead>
@@ -75,13 +78,12 @@
                 <td style="font-weight: bold; font-size: 20px; padding-left: 20px">[[${producto.idproducto}]]</td>
                 <td style="font-weight: bold; font-size: 20px;">[[${producto.nombre}]]</td>
                 <td>[[${producto.kcal}]]</td>
-                <td>[[${producto.descripcion}]]</td>
                 <td>[[${producto.tipo.nombre}]]</td>
-                <td>
+                <td>[[${producto.descripcion}]]</td>
+                <td style="width:15%;">
                     <a class="h4 mr-3" th:href="@{#}">
                         <!-- Abrimos icono de fontawesome, Le damos color, umentamos el escalado al pasar por encima con el ratón y recuperamos escalado al quitar el ratón-->
-                       <i class="fa-solid fa-eye"
-                            style="color: #FB6100;"
+                       <i class="fa-solid fa-eye icono"
                             onmouseover="this.style.transform='scale(1.2)'"
                             onmouseout="this.style.transform='scale(1.0)'"
                             type="button"
@@ -91,8 +93,7 @@
                     </a>
 
                     <a class="h4 mr-3" th:href="@{'/productos/edit/' + ${producto.idproducto} }">
-                        <i class="fa-solid fa-pen-to-square"
-                           style="color: #FB6100;"
+                        <i class="fa-solid fa-pen-to-square icono"
                            onmouseover="this.style.transform='scale(1.2)'"
                            onmouseout="this.style.transform='scale(1.0)'">
                         </i>
@@ -100,8 +101,7 @@
 
 <!--                    <a class="h4 mr-3" th:href="@{'/productos/delete/' + ${producto.idproducto} }">-->
                     <a class="h4 mr-3" th:href="@{#}">
-                        <i class="fa-solid fa-trash-can"
-                           style="color: #FB6100;"
+                        <i class="fa-solid fa-trash-can icono"
                            onmouseover="this.style.transform='scale(1.2)'"
                            onmouseout="this.style.transform='scale(1.0)'"
                            type="button"
@@ -118,8 +118,8 @@
             <th style="border-bottom-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
             <th style="font-size: 20px">Nombre</th>
             <th>Calorias</th>
-            <th>Descripción</th>
             <th>Tipo</th>
+            <th>Descripción</th>
             <th style="border-bottom-right-radius:10px;"></th>
         </tr>
         </tfooter>
@@ -133,12 +133,8 @@
 <div class="modal" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl border-0">
         <div class="modal-content">
-
-            <div class="modal-header ">
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <h1 class="modal-h1" style="margin-bottom: 30px;">¿Confirmar?</h1>
+            <div class="modal-body text-center">
+                <h1 class="modal-h1 mt-4" style="margin-bottom: 30px;">¿Confirmar?</h1>
                 <p class="modal-p">El plato se eliminará al aceptar.
                 <br>
                 ¿Está seguro que desea eliminar el plato?</p>
@@ -154,7 +150,7 @@
 </div>
 <!--/.Modal mensaje confirmación eliminación Plato -->
 
-<!-- Modal mensaje botón ojo en construcción -->
+<!-- Modal mensaje "botón eye" en construcción -->
 <div class="modal" id="verModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl border-0">
         <div class="modal-content">
@@ -177,7 +173,7 @@
         </div>
     </div>
 </div>
-<!--/.Modal mensaje botón ojo en construcción -->
+<!--/.Modal mensaje "botón eye" en construcción -->
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

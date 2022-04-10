@@ -7,6 +7,12 @@
     text-decoration: none;
     border: none;
     outline: none;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+a:hover{
+    text-decoration: none;
+    color: #fff;
 }
 
 body {
@@ -36,3 +42,4 @@ body {
 .dropdown-menu {
     background-color: #fa9c62;
 }
+

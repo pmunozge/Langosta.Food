@@ -32,7 +32,7 @@ public class ProductoController {
     @GetMapping("/productos/new")
     public String showNewFormProducto(Model model){
         model.addAttribute("producto", new Producto());
-        model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo producto" );
+        model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo plato" );
         return "producto_form";
     }
 
@@ -48,7 +48,7 @@ public class ProductoController {
         try {
             Producto producto = service.get(idproducto);
             model.addAttribute("producto", producto);
-            model.addAttribute("pageTitle", "Edición de producto ");
+            model.addAttribute("pageTitle", "Edición de plato ");
 
             return "producto_form";
         } catch (MenuNotFoundException e) {

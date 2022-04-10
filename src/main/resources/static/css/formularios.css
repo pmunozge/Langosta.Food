@@ -1,0 +1,26 @@
+#tabla-formulario {
+    background-color:white;
+    border-radius:10px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 0.5rem 1rem !important;
+    margin-bottom: 100px;
+    padding: 1.5rem !important;
+}
+
+.btn-guardar {
+    border: none;
+    border-radius: 10px;
+    background-color: #FB6100;
+    color:#ffffff;
+    padding: .5rem;
+    margin: 10px;
+    width:130px;
+    height:40px;
+}
+
+label {
+    text-align:left;
+    padding: 1rem !important;
+}
+::placeholder {
+    background-color: #AAAAAA;
+    }
