@@ -43,3 +43,29 @@ body {
     background-color: #fa9c62;
 }
 
+.btn-eliminar {
+    border: none;
+    border-radius: 10px;
+    background-color: #FB6100;
+    color:#ffffff;
+    padding: .5rem;
+    margin: 10px;
+    width:130px;
+    height:40px;
+}
+.btn-cancelar {
+    border: none;
+    border-radius: 10px;
+    background-color: #818181;
+    color:#ffffff;
+    padding: .5rem;
+    margin: 10px;
+    width:130px;
+    height:40px;
+}
+
+
+.modal-p {
+    font-size: 1.5rem;
+    font-weight: 400;
+}

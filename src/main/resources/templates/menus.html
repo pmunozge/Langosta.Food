@@ -49,44 +49,37 @@
 <!-- Inicio contenido -->
 <div class="container">
     <h1 class="mt-5 mb-5 title-h1">Menús</h1>
+    <div th:if="${message}" class="alert alert-success text-center">
+        [[${message}]]
+    </div>
     <div class="grid-card" >
-        <div class="card" th:each="menu : ${listMenus}" >
-            <!--img src="..." class="card-img-top" alt="..."-->
-            <div class="card-body">
-                <h5 class="card-title">[[${menu.nombre}]]</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a th:href="@{'/menus/edit/' + ${menu.idmenu} }" class="btn btn-primary">Editar</a>
-
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" data-bs-whatever="${menu.idmenu}">
-                    Eliminar
-                </button>
-
-            </div>
-
+        <div class="card" th:each="menu : ${listMenus}" th:attr="id=${'#staticBackdrop' + menu.idmenu}">
             <!-- Modal -->
-            <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade"  th:attr="id=${'staticBackdrop' + menu.idmenu}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
+                    <div class="modal-content p-4">
                         <div class="modal-body">
-                            <div>¿Seguro que quieres eliminar el menú?</div>
+                            <p class="modal-p">¿Seguro que quieres eliminar el [[${menu.nombre}]]?</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <!--a th:href="@{'/menus/delete/' + ${menu.idmenu} }" class="btn btn-primary"-->
-                            <a th:href="@{'/menus/delete/' + ${menu.idmenu} }" class="btn btn-primary">
-                            Confirmar</a>
+                            <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                            <a th:href="@{'/menus/delete/' + ${menu.idmenu} }" class="btn btn-eliminar">
+                                Confirmar</a>
 
                         </div>
                     </div>
                 </div>
             </div>
-
-
+            <div class="card-body">
+                <h5 class="card-title">[[${menu.nombre}]]</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a th:href="@{'/menus/edit/' + ${menu.idmenu} }" class="btn btn-cancelar">Editar</a>
+                <button type="button" class="btn btn-eliminar" data-bs-toggle="modal" th:attr="data-bs-target=${'#staticBackdrop'+menu.idmenu}" data-row="${menu}">
+                    Eliminar
+                </button>
+            </div>
         </div>
-
     </div>
-
-
 
 </div>
 

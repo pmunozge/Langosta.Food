@@ -73,7 +73,7 @@
         </tr>
         </thead>
         <tbody>
-        <th:block th:each="producto : ${listProductos}">
+        <th:block th:each="producto : ${listProductos}" th:attr="id=${'#staticBackdrop' + producto.idproducto}">
             <tr>
                 <td style="font-weight: bold; font-size: 20px; padding-left: 20px">[[${producto.idproducto}]]</td>
                 <td style="font-weight: bold; font-size: 20px;">[[${producto.nombre}]]</td>
@@ -106,11 +106,54 @@
                            onmouseout="this.style.transform='scale(1.0)'"
                            type="button"
                            data-bs-toggle="modal"
-                           data-bs-target="#eliminarModal">
+                           th:attr="data-bs-target=${'#eliminarModal'+ producto.idproducto}" data-row="${producto}">
                         </i>
                     </a>
                 </td>
             </tr>
+
+            <!-- Modal -->
+            <div class="modal fade"  th:attr="id=${'eliminarModal' + producto.idproducto}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-4">
+                        <div class="modal-body">
+                            <p class="modal-p">¿Seguro que quieres eliminar el plato [[${producto.nombre}]]?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+                            <a th:href="@{'/productos/delete/' + ${producto.idproducto} }" class="btn btn-eliminar">
+                                Confirmar</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal mensaje confirmación eliminación Plato -->
+            <!--
+            <div class="modal" th:attr="id=${'eliminarModal' + producto.idproducto}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl border-0">
+                    <div class="modal-content">
+                        <div class="modal-body text-center">
+                            <h1 class="modal-h1 mt-4" style="margin-bottom: 30px;">¿Confirmar?</h1>
+                            <p class="modal-p">El plato se eliminará al aceptar.
+                                <br>
+                                ¿Está seguro que desea eliminar el plato [[${producto.nombre}]]?</p>
+                            <div class="mt-4">
+                                <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+
+                                <a class="btn btn-eliminar" th:href="@{'/productos/delete/' + ${producto.idproducto} }" >
+
+                                 <button type="button" class="btn-eliminar">Eliminar</button>  <a th:href="@{'/productos/delete/' + ${producto.idproducto} }" class="btn btn-eliminar">                  <a class="h4 mr-3" th:href="@{'/productos/delete/' + ${producto.idproducto} }">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div> -->
+            <!--/.Modal mensaje confirmación eliminación Plato -->
+
+
+
         </th:block>
 
         <tfooter class="thead-light">
@@ -129,26 +172,7 @@
 
 
 
-<!-- Modal mensaje confirmación eliminación Plato -->
-<div class="modal" id="eliminarModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl border-0">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <h1 class="modal-h1 mt-4" style="margin-bottom: 30px;">¿Confirmar?</h1>
-                <p class="modal-p">El plato se eliminará al aceptar.
-                <br>
-                ¿Está seguro que desea eliminar el plato?</p>
-                <div class="mt-4">
-                    <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn-eliminar">Eliminar</button>
-                    <!--                    <a class="h4 mr-3" th:href="@{'/productos/delete/' + ${producto.idproducto} }">-->
-                </div>
-            </div>
 
-        </div>
-    </div>
-</div>
-<!--/.Modal mensaje confirmación eliminación Plato -->
 
 <!-- Modal mensaje "botón eye" en construcción -->
 <div class="modal" id="verModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
