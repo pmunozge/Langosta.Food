@@ -69,6 +69,7 @@ public class Menu {
     }
 
     public Menu() {
+
     }
 
     public Menu(Integer idmenu, String nombre, float precio, boolean enabled, Set<Producto> productos) {
