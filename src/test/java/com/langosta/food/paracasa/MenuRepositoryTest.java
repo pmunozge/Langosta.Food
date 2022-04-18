@@ -4,11 +4,16 @@ package com.langosta.food.paracasa;
 import com.langosta.food.paracasa.model.Menu;
 import com.langosta.food.paracasa.model.MenuRepository;
 //import org.junit.jupiter.api.Assertions;
+import com.langosta.food.paracasa.model.Usuario;
+import com.langosta.food.paracasa.model.UsuarioRepository;
+import com.langosta.food.paracasa.services.UsuarioService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.annotation.Rollback;
 
 import java.util.Optional;
@@ -70,5 +75,22 @@ public class MenuRepositoryTest {
 
         Optional<Menu> optionalMenu = repo.findById(idmenu);
         Assertions.assertThat(optionalMenu).isNotPresent();
+    }
+
+    @Autowired
+    private UsuarioRepository repo2;
+
+
+
+    @Test
+    public void cargarUsuario(){
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        Usuario us = new Usuario();
+        us.setNombre("langosta");
+        us.setPassword(encoder.encode("food"));
+        repo2.save(us);
+
+
     }
 }

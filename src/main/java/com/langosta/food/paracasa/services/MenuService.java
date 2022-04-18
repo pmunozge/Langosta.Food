@@ -20,14 +20,6 @@ public class MenuService {
         return (List<Menu>) repo.findAll();
     }
     public void save(Menu menu){
-    /*    Producto p= new Producto();
-        Tipo t = new Tipo();
-        t.setIdtipo(2);
-        p.setNombre("probando");
-        p.setDescripcion("swwe");
-        p.setKcal("2.0");
-        p.setTipo(t);
-        menu.getProductos().add(p);*/
         repo.save(menu);
     }
     public Menu get(Integer idmenu) throws MenuNotFoundException {
