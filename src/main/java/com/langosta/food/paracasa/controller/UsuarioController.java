@@ -17,15 +17,35 @@ public class UsuarioController {
     @Autowired
     UsuarioService service;
 
-    @PostMapping("/usuarioTest")
-    public String saveMenu(){
+    @PostMapping("/usuario/save")
+    public String saveUsuario(Usuario usuario, RedirectAttributes ra){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         Usuario user = new Usuario();
-        user.setNombre("langosta");
+
+        user.setPassword(encoder.encode(usuario.getPassword()));
+        user.setNombre(usuario.getNombre());
+
+        service.save(user);
+        /*user.setNombre("langosta");
         user.setPassword(encoder.encode("food"));
         service.save(user);
-        return "redirect:/menus";
+        return "redirect:/menus";*/
+        ra.addFlashAttribute("message","El usuario ha sido guardado con éxito.");
+        return "redirect:/login";
+        }
+
+    @GetMapping("/register")
+    public String showNewForm(Model model){
+        model.addAttribute("usuario", new Usuario());
+        //model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo menú " );
+        return "registro_form";
     }
-
-
+/*
+    @GetMapping("/login")
+    public String showLogin(Model model){
+        //model.addAttribute("usuario", new Usuario());
+        //model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo menú " );
+        return "login";
+    }
+*/
 }
