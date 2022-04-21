@@ -40,12 +40,11 @@ public class UsuarioController {
         //model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo menú " );
         return "registro_form";
     }
-/*
-    @GetMapping("/login")
+
+/*    @GetMapping("/login")
     public String showLogin(Model model){
         //model.addAttribute("usuario", new Usuario());
         //model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo menú " );
         return "login";
-    }
-*/
+    }*/
 }

@@ -13,16 +13,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService/* implements UserDetailsService*/ {
 
     @Autowired
     private UsuarioRepository repo;
 
-    @Override
+ /*   @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario us = repo.findBynombre(username);
+        Optional<Usuario> us = repo.findByNombre(username);
 
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("ADMIN"));
@@ -31,11 +32,32 @@ public class UsuarioService implements UserDetailsService {
 
         return userDet;
 
-    }
+    }*/
 
     public void save(Usuario user){
         repo.save(user);
     }
 
+
+    public List<Usuario> lista(){
+        return (List<Usuario>) repo.findAll();
+    }
+
+    public Optional<Usuario> getById(int id){
+        return repo.findById(id);
+    }
+
+    public Optional<Usuario> getByNombre(String nombreUsuario){
+        return repo.findByNombre(nombreUsuario);
+    }
+
+
+    public boolean existsById(int id){
+        return repo.existsById(id);
+    }
+
+    public boolean existsByNombre(String nombreUsuario){
+        return repo.existsByNombre(nombreUsuario);
+    }
 
 }

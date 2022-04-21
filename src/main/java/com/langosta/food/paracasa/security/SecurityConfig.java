@@ -1,5 +1,7 @@
 package com.langosta.food.paracasa.security;
 
+import com.langosta.food.paracasa.config.CustomAccessDeniedHandler;
+import com.langosta.food.paracasa.security.service.UserDetailsServiceImpl;
 import com.langosta.food.paracasa.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
@@ -18,12 +21,15 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UsuarioService userDetailService;
+    UserDetailsServiceImpl userDetailsServiceImpl;
 
    /* @Autowired
     private BCryptPasswordEncoder bcrypt;*/
 
-
+    @Bean
+    AccessDeniedHandler accessDeniedHandler(){
+        return new CustomAccessDeniedHandler();
+    }
    @Bean
    public PasswordEncoder passwordEncoder(){
        return new BCryptPasswordEncoder();
@@ -32,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsServiceImpl).passwordEncoder(passwordEncoder());
 
     }
 
@@ -44,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .httpBasic();*/
-        http
+      /*  http
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/register/**").permitAll()
@@ -54,7 +60,47 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin();
 
-
+*/
+        String[] resources = new String[]{
+                "/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**"
+        };
+    /*    http
+                .authorizeRequests()
+                .antMatchers(resources).permitAll()
+                .antMatchers("/register","/login").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .defaultSuccessUrl("/userForm")
+                .failureUrl("/login?error=true")
+                .usernameParameter("nombreUsuario")
+                .passwordParameter("password")
+                .and()
+                .logout()
+                .permitAll()
+                .logoutSuccessUrl("/login?logout");*/
+        http.authorizeRequests()
+                .antMatchers(resources).permitAll()
+                .antMatchers(   "/login", "/register" )
+                .permitAll()
+                .antMatchers("/usuario/save")
+                .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginProcessingUrl("/signin")
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/index")
+                .usernameParameter("nombreUsuario")
+                .passwordParameter("password")
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler())
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout").permitAll()
+                .deleteCookies("JSESSIONID");
 
 
     }

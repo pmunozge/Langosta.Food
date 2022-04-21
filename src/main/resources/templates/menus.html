@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http:www.thymeleaf,org">
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>¡ParaCasa! langosta.food</title>
@@ -49,9 +50,9 @@
 <!-- Inicio contenido -->
 <div class="container">
     <h1 class="mt-5 mb-5 title-h1">Menús</h1>
-    <div th:if="${message}" class="alert alert-success text-center">
+   <!-- <div th:if="${message}" class="alert alert-success text-center">
         [[${message}]]
-    </div>
+    </div>-->
     <div class="grid-card" >
         <div class="card" th:each="menu : ${listMenus}" th:attr="id=${'#staticBackdrop' + menu.idmenu}">
             <!-- Modal -->
