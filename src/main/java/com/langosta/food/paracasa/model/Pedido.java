@@ -1,5 +1,7 @@
 package com.langosta.food.paracasa.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ public class Pedido {
     private Integer idpedido;
 
     @Column
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date fecha;
 
     public Pedido(Integer idpedido, Date fecha) {

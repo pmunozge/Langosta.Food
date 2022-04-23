@@ -34,8 +34,8 @@ public class PedidoController {
     }
 
         @GetMapping("/pedidos/new")
-        public String showNewFormProducto(Model model){
-            model.addAttribute("pedido", new Producto());
+        public String showNewFormPedido(Model model){
+            model.addAttribute("pedido", new Pedido());
             model.addAttribute("pageTitle", "¡ParaCasa! Añadir un nuevo pedido" );
             return "pedido_form";
         }
