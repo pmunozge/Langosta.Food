@@ -28,7 +28,7 @@ public class PedidoController {
     public String showMenuList(Model model){
 
         List<Pedido> listPedidos = service.listAll();
-        model.addAttribute("listProductos",listPedidos);//vinculación con el html
+        model.addAttribute("listPedidos",listPedidos);//vinculación con el html
 
         return "pedidos";//archivo html
     }
