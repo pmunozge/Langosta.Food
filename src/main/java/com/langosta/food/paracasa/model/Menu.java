@@ -36,6 +36,12 @@ public class Menu {
     //@JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
     private Set<Producto> productos=new HashSet();
 
+
+    @ManyToMany(cascade = {CascadeType.ALL},mappedBy = "menus")
+    //@ManyToMany( fetch = FetchType.LAZY,cascade =CascadeType.PERSIST)
+    //@JoinTable(name="ProductoMenu", joinColumns={@JoinColumn(name="idproducto")}, inverseJoinColumns={@JoinColumn(name="idmenu")})
+    private Set<Pedido> pedidos=new HashSet();
+
     public Integer getIdmenu() {
         return idmenu;
     }
