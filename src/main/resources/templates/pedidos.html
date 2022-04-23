@@ -69,21 +69,23 @@
 </div>-->
 
 <!--tabla con los contenidos a mostrar-->
-<div id="container_pedidos" class="container text-center">
-    <table id="tabla-pedidos" class="pedido">
+<div id="container_platos" class="container text-center">
+    <table id="tabla-platos" class="table">
+
         <thead class="thead-light">
         <tr>
-            <th style="border-top-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
-            <th style="font-size: 20px">ID</th>
+            <th style="border-top-left-radius:10px; width:10%; font-size: 20px; padding-left: 20px">#ID</th>
             <th>Fecha</th>
             <th style="border-top-right-radius:10px;"></th>
         </tr>
         </thead>
+
         <tbody>
-        <th:block th:each="pedido : ${listPedido}" th:attr="id=${'#staticBackdrop' + pedido.idpedido}">
+        <th:block th:each="pedido : ${listPedidos}" th:attr="id=${'#staticBackdrop' + pedido.idpedido}">
             <tr>
                 <td style="font-weight: bold; font-size: 20px; padding-left: 20px">[[${pedido.idpedido}]]</td>
                 <td style="font-weight: bold; font-size: 20px;">[[${pedido.fecha}]]</td>
+
                 <td style="width:15%;">
                     <a class="h4 mr-3" th:href="@{#}">
                         <!-- Abrimos icono de fontawesome, Le damos color, umentamos el escalado al pasar por encima con el ratón y recuperamos escalado al quitar el ratón-->
@@ -121,7 +123,7 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content p-4">
                         <div class="modal-body">
-                            <p class="modal-p">¿Seguro que quieres eliminar el plato [[${producto.nombre}]]?</p>
+                            <p class="modal-p">¿Seguro que quieres eliminar el pedido #[[${pedido.idpedido}]]?</p>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
@@ -138,8 +140,7 @@
 
         <tfooter class="thead-light">
             <tr style="border-bottom-radius:10px;">
-                <th style="border-bottom-left-radius:10px; width:5%; font-size: 20px; padding-left: 20px">#</th>
-                <th style="font-size: 20px">ID</th>
+                <th style="border-bottom-left-radius:10px; width:10%; font-size: 20px; padding-left: 20px">#ID</th>
                 <th>Fecha</th>
 
                 <th style="border-bottom-right-radius:10px;"></th>
@@ -150,6 +151,7 @@
 </div>
 
 <!-- Modal mensaje "botón eye" en construcción -->
+
 <div class="modal" id="verModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl border-0">
         <div class="modal-content">
@@ -161,7 +163,7 @@
                 <h1 class="modal-h1" style="margin-bottom: 30px;">Botón en construcción</h1>
                 <p class="modal-p">Este botón está preparado para
                     <br>
-                    incluir un nuevo elemento en el Producto 03</p>
+                    incluir un nuevo elemento en el Producto 04</p>
                 <div class="mt-4">
                     <button type="button" class="btn-cancelar" data-bs-dismiss="modal">Cerrar</button>
                 </div>
