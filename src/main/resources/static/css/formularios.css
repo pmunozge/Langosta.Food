@@ -24,3 +24,11 @@ label {
 ::placeholder {
     background-color: #AAAAAA;
     }
+
+.a-register {
+    color: #000000;
+}
+
+.a-register:hover {
+    color: #FB6100;
+}
