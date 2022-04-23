@@ -6,6 +6,7 @@ import com.langosta.food.paracasa.model.Producto;
 import com.langosta.food.paracasa.services.MenuService;
 import com.langosta.food.paracasa.services.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,7 @@ public class ProductoController {
     @Autowired
     private ProductoService service;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/productos")
     public String showMenuList(Model model){
 
