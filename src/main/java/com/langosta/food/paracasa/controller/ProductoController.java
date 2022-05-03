@@ -21,7 +21,7 @@ public class ProductoController {
     @Autowired
     private ProductoService service;
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @GetMapping("/productos")
     public String showMenuList(Model model){
 
