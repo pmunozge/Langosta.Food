@@ -25,4 +25,14 @@ public class RestApi {
     public void insertar(@RequestBody Menu menu){//Con esta notacion Spring coge el JSOn y lo transforma en objeto
         repo.save(menu);
     }
+
+    /*LO que hay que poner en postman
+    {
+
+    "enabled": true,
+    "nombre": "ProbandoJson",
+    "precio": 22
+
+     }
+     */
 }
