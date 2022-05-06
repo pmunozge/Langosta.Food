@@ -16,7 +16,7 @@ import java.util.Set;
 
 @Service
 public class CreateAdmin implements CommandLineRunner {
-
+/*
     @Autowired
     UsuarioService usuarioService;
 
@@ -25,7 +25,7 @@ public class CreateAdmin implements CommandLineRunner {
 
     @Autowired
     RolService rolService;
-
+*/
     @Override
     public void run(String... args) throws Exception {
      /*   Usuario usuario = new Usuario();

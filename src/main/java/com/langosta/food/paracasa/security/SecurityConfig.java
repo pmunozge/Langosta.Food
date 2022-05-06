@@ -4,8 +4,11 @@ import com.langosta.food.paracasa.config.CustomAccessDeniedHandler;
 import com.langosta.food.paracasa.security.service.UserDetailsServiceImpl;
 import com.langosta.food.paracasa.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,20 +17,59 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.bind.annotation.RestController;
 
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
+@SpringBootApplication
+@RestController
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers(   "/index", "/register","/css/**", "/js/**", "/webjars/**","/api/**")
+                .permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .oauth2Login()
+                .and()
+                .logout().logoutSuccessUrl("/");
+
+
+
+
+        /*
+        // @formatter:off
+        http
+                .authorizeRequests(a -> a
+                        .antMatchers( "/error", "/webjars/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+
+                .exceptionHandling(e -> e
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                )
+                .logout(l -> l
+                        .logoutSuccessUrl("/").permitAll())
+                .oauth2Login();
+
+        )
+*/
+        // @formatter:on
+    }
+
+/*
     @Autowired
     UserDetailsServiceImpl userDetailsServiceImpl;
 
    /* @Autowired
     private BCryptPasswordEncoder bcrypt;*/
-
+/*
     @Bean
     AccessDeniedHandler accessDeniedHandler(){
         return new CustomAccessDeniedHandler();
@@ -46,43 +88,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-   /*     http
-                .authorizeHttpRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();*/
-      /*  http
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/register/**").permitAll()
-                .antMatchers("/usuario/save").permitAll()
-                .antMatchers("/login*").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin();
+        http
+            .csrf().disable()
+                .authorizeRequests().antMatchers("/login").permitAll()
+                .anyRequest().authenticated();
 
-*/
         String[] resources = new String[]{
                 "/include/**","/css/**","/icons/**","/img/**","/js/**","/layer/**"
         };
-    /*    http
-                .authorizeRequests()
-                .antMatchers(resources).permitAll()
-                .antMatchers("/register","/login").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .defaultSuccessUrl("/userForm")
-                .failureUrl("/login?error=true")
-                .usernameParameter("nombreUsuario")
-                .passwordParameter("password")
-                .and()
-                .logout()
-                .permitAll()
-                .logoutSuccessUrl("/login?logout");*/
+
         http.authorizeRequests()
                 .antMatchers(resources).permitAll()
                 .antMatchers(   "/login","/index", "/register","/css/**", "/js/**", "/webjars/**","/api/**")
@@ -105,12 +119,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login?logout").permitAll()
                 .deleteCookies("JSESSIONID");
-        http.csrf().disable();
+        //http.csrf().disable();
 
 
     }
 
 
-
+*/
 
 }
