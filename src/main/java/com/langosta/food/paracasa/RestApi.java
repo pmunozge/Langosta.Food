@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
+//@RequestMapping("/api/")
 public class RestApi {
 
     @Autowired
@@ -66,7 +66,7 @@ public class RestApi {
 
     }
 
-    @PostMapping("/securedapi/Roles")
+    @PostMapping("/securedapi/roles")
     public void insertarRoles(@RequestBody Rol rol){//Con esta notacion Spring coge el JSOn y lo transforma en objeto
         repoRol.save(rol);
     }
