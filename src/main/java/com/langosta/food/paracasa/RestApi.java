@@ -1,20 +1,14 @@
 package com.langosta.food.paracasa;
 
-import com.langosta.food.paracasa.model.Menu;
-import com.langosta.food.paracasa.model.Pedido;
-import com.langosta.food.paracasa.model.Producto;
-import com.langosta.food.paracasa.model.Usuario;
-import com.langosta.food.paracasa.services.MenuService;
-import com.langosta.food.paracasa.services.PedidoService;
-import com.langosta.food.paracasa.services.ProductoService;
-import com.langosta.food.paracasa.services.UsuarioService;
+import com.langosta.food.paracasa.model.*;
+import com.langosta.food.paracasa.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-//@RequestMapping("/api/menus")
+@RequestMapping("/api/")
 public class RestApi {
 
     @Autowired
@@ -25,6 +19,8 @@ public class RestApi {
     private UsuarioService repoUsuario;
     @Autowired
     private ProductoService repoProducto;
+    @Autowired
+    private RolService repoRol;
 
 
     @GetMapping("/api/menus")
@@ -48,6 +44,7 @@ public class RestApi {
      }
      */
 
+
     @GetMapping("/securedapi/pedidos")
     public List<Pedido> listarPedidos(){
         return repoPedido.listAll();
@@ -62,5 +59,26 @@ public class RestApi {
     public void insertarProdcuto(@RequestBody Producto producto){//Con esta notacion Spring coge el JSOn y lo transforma en objeto
         repoProducto.save(producto);
     }
+
+    @GetMapping("/securedapi/roles")
+    public List<Rol> listarRoles(){
+        return repoRol.lista();
+
+    }
+
+    @PostMapping("/securedapi/Roles")
+    public void insertarRoles(@RequestBody Rol rol){//Con esta notacion Spring coge el JSOn y lo transforma en objeto
+        repoRol.save(rol);
+    }
+
+    /*Lo que hay que poner en postman
+    {
+
+    "enabled": true,
+    "nombre": "ProbandoJson",
+    "precio": 22
+
+     }
+     */
 
 }

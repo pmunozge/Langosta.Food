@@ -24,7 +24,7 @@ import java.util.Optional;
 public class MenuRepositoryTest {
     @Autowired private MenuRepository repo;
 
-    @Test
+/*    @Test
     public void testAddMenu(){
         Menu menu=new Menu();
         menu.setNombre("Nombre menu prueba");
@@ -92,5 +92,5 @@ public class MenuRepositoryTest {
         repo2.save(us);
 
 
-    }
+    }*/
 }
